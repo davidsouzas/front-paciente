@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Forms &rsaquo; Advanced Forms &mdash; Stisla</title>
+
+  <!-- General CSS Files -->
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">Olá, David Souza</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title">Logged in 5 min ago</div>
+              <a href="features-profile.html" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Perfil
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item has-icon text-danger">
+                <i class="fas fa-sign-out-alt"></i> Sair
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">PatientRegister</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.html">PR</a>
+          </div>
+          <ul class="sidebar-menu">
+              <li class="menu-header">Menu</li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Dashboard</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="index-0.html">Dashboard</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item dropdown active">
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Cadastros</span></a>
+                <ul class="dropdown-menu">
+                  <li class="active"><a class="nav-link" href="cadastro-paciente.html">Cadastrar Paciente</a></li>
+                  <li><a class="nav-link" href="cadastro-enfermeiro.html">Cadastrar Enfermeiro</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+
+            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+              <a href="https://github.com/davidsouzas/Projeto_analista/blob/main/meu_js.js" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                <i class="fas fa-rocket"></i> GitHub
+              </a>
+            </div>
+        </aside>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Cadastrar Paciente</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="#">Cadastros</a></div>
+              <div class="breadcrumb-item">Cadastrar Paciente</div>
+            </div>
+          </div>
+
+          <div class="section-body">
+
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Formulário</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Nome:</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>CPF:</label>
+                      <input type="text" onKeyPress="MascaraGenerica(this, 'CPF');" class="form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
+                    </div>
+                    <div class="form-group">
+                      <label>Data de Nascimento:</label>
+                      <input type="text" onKeyPress="MascaraGenerica(this, 'DATA');" class="form-control datemask" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="form-group">
+                      <label>Peso:</label>
+                      <input type="text" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control invoice-input">
+                    </div>
+                    <div class="form-group">
+                      <label>Altura:</label>
+                      <input type="text" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control creditcard">
+                    </div>
+                    <div class="form-group">
+                      <label>UF:</label>
+                      <select name="estado" id="estado" class="form-control">
+                        <option name="Selecione" value="Selecione">Selecione</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-7">
+                        <button class="btn btn-primary">Cadastrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          
+        </div>
+        <div class="footer-right">
+          2.3.0
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="assets/js/stisla.js"></script>
+
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/forms-advanced-forms.js"></script>
+</body>
+</html>
