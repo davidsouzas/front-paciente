@@ -16,6 +16,27 @@ function getRequest(url) {
   return request.responseText
 }
 
+let data = {}
+
+function handleChange(event) {
+  data[event.name] =  event.value
+}
+
+$("#cadastrar").click(function(){
+  data.data_nasc = data.data_nasc.split("/").reverse().join("-")
+ // data.data_nasc = data.data_nasc[2]+"-"+data.data_nasc[1]+"-"+data.data_nasc[0]
+  apiPost("patients", data).then( function(response){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Paciente cadastrado com sucesso',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  });
+
+})
+
 function criaSelect(estado) {
   let opcao = document.createElement("option");
   opcao.value = estado.id

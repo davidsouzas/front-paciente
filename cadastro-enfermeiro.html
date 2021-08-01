@@ -106,11 +106,11 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Nome:</label>
-                      <input type="text" class="form-control">
+                      <input name="nome" required="required" onchange="handleChange(this)" type="text" class="required form-control">
                     </div>
                     <div class="form-group">
                       <label>CPF:</label>
-                      <input type="text" onKeyPress="MascaraGenerica(this, 'CPF');" class="form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
+                      <input type="text" name="cpf" onblur="verificarCpf(this)" onchange="handleChange(this)" onKeyPress="MascaraGenerica(this, 'CPF');" class="required form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
                     </div>
                     <div class="form-group">
                       <label>Senha:</label>
@@ -120,7 +120,7 @@
                             <i class="fas fa-lock"></i>
                           </div>
                         </div>
-                        <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+                        <input type="password" required="required" name="senha" onchange="handleChange(this)" class="required form-control pwstrength" data-indicator="pwindicator">
                       </div>
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
@@ -130,7 +130,7 @@
                     <div class="form-group">
                       <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
                       <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Cadastrar</button>
+                        <button id="cadastrar" class="btn btn-primary">Cadastrar</button>
                       </div>
                     </div>
                   </div>
@@ -164,17 +164,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
 
-  <!-- JS Libraies -->
-  <script src="node_modules/summernote/dist/summernote-bs4.js"></script>
-  <script src="node_modules/codemirror/lib/codemirror.js"></script>
-  <script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
-  <script src="node_modules/selectric/public/jquery.selectric.min.js"></script>
-
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script src="assets/js/requests.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Page Specific JS File -->
+  <script src="assets/js/page/cadastro-enfermeiro.js"></script>
 </body>
 
 </html>

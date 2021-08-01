@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Forms &rsaquo; Advanced Forms &mdash; Stisla</title>
+  <title>Cadastro &rsaquo; Paciente &mdash; PatientRegister</title>
 
   <!-- General CSS Files -->
   <link rel="shortcut icon" href="#">
@@ -101,34 +101,34 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Nome:</label>
-                      <input type="text" class="form-control">
+                      <input onchange="handleChange(this)" name="nome" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>CPF:</label>
-                      <input type="text" onKeyPress="MascaraGenerica(this, 'CPF');" class="form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
+                      <input type="text" onchange="handleChange(this)" name="cpf" onKeyPress="MascaraGenerica(this, 'CPF');" class="form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
                     </div>
                     <div class="form-group">
                       <label>Data de Nascimento:</label>
-                      <input type="text" onKeyPress="MascaraGenerica(this, 'DATA');" class="form-control datemask" placeholder="DD/MM/AAAA">
+                      <input type="text" onchange="handleChange(this)" name="data_nasc" onKeyPress="MascaraGenerica(this, 'DATA');" class="form-control datemask" placeholder="DD/MM/AAAA">
                     </div>
                     <div class="form-group">
                       <label>Peso:</label>
-                      <input type="text" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control invoice-input">
+                      <input type="text" onchange="handleChange(this)" name="peso" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control invoice-input">
                     </div>
                     <div class="form-group">
                       <label>Altura:</label>
-                      <input type="text" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control creditcard">
+                      <input type="text" onchange="handleChange(this)" name="altura" onKeyPress="MascaraGenerica(this, 'FLOAT');" class="form-control creditcard">
                     </div>
                     <div class="form-group">
                       <label>UF:</label>
-                      <select name="estado" id="estado" class="form-control">
+                      <select name="uf" onchange="handleChange(this)" id="estado" class="form-control">
                         <option name="Selecione" value="Selecione">Selecione</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
                       <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Cadastrar</button>
+                        <button id="cadastrar" class="btn btn-primary">Cadastrar</button>
                       </div>
                     </div>
                   </div>
@@ -160,6 +160,8 @@
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script src="assets/js/requests.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Page Specific JS File -->
   <script src="assets/js/page/forms-advanced-forms.js"></script>
