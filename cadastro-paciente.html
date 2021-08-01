@@ -27,16 +27,18 @@
           </ul>
         </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Olá, David Souza</div></a>
+          <li class="dropdown"><a href="#" data-toggle="dropdown"
+              class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+              <div id="username" class="d-sm-none d-lg-inline-block"></div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Perfil
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="/auth-login.html" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Sair
               </a>
             </div>
@@ -56,7 +58,7 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="index-0.html">Dashboard</a></li>
+                  <li><a class="nav-link" href="index.html">Dashboard</a></li>
                 </ul>
               </li>
               
@@ -72,7 +74,12 @@
 
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
               <a href="https://github.com/davidsouzas/Projeto_analista/blob/main/meu_js.js" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                <i class="fas fa-rocket"></i> GitHub
+                <i class="fas fa-rocket"></i> GitHub Front
+              </a>
+            </div>
+            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+              <a href="https://github.com/davidsouzas/Projeto_analista/blob/main/meu_js.js" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                <i class="fas fa-rocket"></i> GitHub Back
               </a>
             </div>
         </aside>
@@ -101,11 +108,11 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label>Nome:</label>
-                      <input onchange="handleChange(this)" name="nome" type="text" class="form-control">
+                      <input onchange="handleChange(this)" name="nome" type="text" class="required form-control">
                     </div>
                     <div class="form-group">
                       <label>CPF:</label>
-                      <input type="text" onchange="handleChange(this)" name="cpf" onKeyPress="MascaraGenerica(this, 'CPF');" class="form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
+                      <input type="text" onchange="handleChange(this)" name="cpf" onKeyPress="MascaraGenerica(this, 'CPF');" class="required form-control purchase-code" placeholder="xxx.xxx.xxx-xx">
                     </div>
                     <div class="form-group">
                       <label>Data de Nascimento:</label>
@@ -162,6 +169,7 @@
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/requests.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="assets/js/checkauth.js"></script>
 
   <!-- Page Specific JS File -->
   <script src="assets/js/page/forms-advanced-forms.js"></script>

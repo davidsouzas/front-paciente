@@ -1,7 +1,8 @@
 var baseUrl = "http://localhost:8080/"
 function apiGet(endpoint){
     var myHeaders = new Headers();
-
+    var token = localStorage.getItem("token")
+    token && myHeaders.append("authorization", token)
     var myInit = { method: 'GET',
                    headers: myHeaders,
                    mode: 'cors',
@@ -23,6 +24,8 @@ function apiGet(endpoint){
 
 function apiPost(endpoint, body){
     var myHeaders = new Headers();
+    var token = localStorage.getItem("token")
+    token && myHeaders.append("authorization", token)
     myHeaders.append("Content-Type", "application/json")
 
     var myInit = { method: 'POST',

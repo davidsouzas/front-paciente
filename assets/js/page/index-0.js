@@ -1,101 +1,61 @@
-"use strict";
-
-var statistics_chart = document.getElementById("myChart").getContext('2d');
-
-var myChart = new Chart(statistics_chart, {
-  type: 'line',
-  data: {
-    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
-      label: 'Statistics',
-      data: [640, 387, 530, 302, 430, 270, 488],
-      borderWidth: 5,
-      borderColor: '#6777ef',
-      backgroundColor: 'transparent',
-      pointBackgroundColor: '#fff',
-      pointBorderColor: '#6777ef',
-      pointRadius: 4
-    }]
-  },
-  options: {
-    legend: {
-      display: false
-    },
-    scales: {
-      yAxes: [{
-        gridLines: {
-          display: false,
-          drawBorder: false,
-        },
-        ticks: {
-          stepSize: 150
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          color: '#fbfbfb',
-          lineWidth: 2
-        }
-      }]
-    },
-  }
-});
-
-$('#visitorMap').vectorMap(
-{
-  map: 'world_en',
-  backgroundColor: '#ffffff',
-  borderColor: '#f2f2f2',
-  borderOpacity: .8,
-  borderWidth: 1,
-  hoverColor: '#000',
-  hoverOpacity: .8,
-  color: '#ddd',
-  normalizeFunction: 'linear',
-  selectedRegions: false,
-  showTooltip: true,
-  pins: {
-    id: '<div class="jqvmap-circle"></div>',
-    my: '<div class="jqvmap-circle"></div>',
-    th: '<div class="jqvmap-circle"></div>',
-    sy: '<div class="jqvmap-circle"></div>',
-    eg: '<div class="jqvmap-circle"></div>',
-    ae: '<div class="jqvmap-circle"></div>',
-    nz: '<div class="jqvmap-circle"></div>',
-    tl: '<div class="jqvmap-circle"></div>',
-    ng: '<div class="jqvmap-circle"></div>',
-    si: '<div class="jqvmap-circle"></div>',
-    pa: '<div class="jqvmap-circle"></div>',
-    au: '<div class="jqvmap-circle"></div>',
-    ca: '<div class="jqvmap-circle"></div>',
-    tr: '<div class="jqvmap-circle"></div>',
-  },
-});
-
-// weather
-getWeather();
-setInterval(getWeather, 600000);
-
-function getWeather() {
-  $.simpleWeather({
-  location: 'Bogor, Indonesia',
-  unit: 'c',
-  success: function(weather) {
-    var html = '';
-    html += '<div class="weather">';
-    html += '<div class="weather-icon text-primary"><span class="wi wi-yahoo-' + weather.code + '"></span></div>';
-    html += '<div class="weather-desc">';
-    html += '<h4>' + weather.temp + '&deg;' + weather.units.temp + '</h4>';
-    html += '<div class="weather-text">' + weather.currently + '</div>';
-    html += '<ul><li>' + weather.city + ', ' + weather.region + '</li>';
-    html += '<li> <i class="wi wi-strong-wind"></i> ' + weather.wind.speed+' '+weather.units.speed + '</li></ul>';
-    html += '</div>';
-    html += '</div>';
-
-    $("#myWeather").html(html);
-  },
-  error: function(error) {
-    $("#myWeather").html('<div class="alert alert-danger">'+error+'</div>');
-  }
-  });
+var estadoscoordenadas = {
+  AC: {coord: [-8.77, -70.55], count: 0}
+, AL: {coord: [-9.62, -36.82], count: 0}
+, AM: {coord: [-3.47, -65.10], count: 0}
+, AP: {coord: [1.41, -51.77], count: 0}
+, BA: {coord:	[-13.29, -41.71], count: 0}
+, CE: {coord: [-5.20, -39.53], count: 0}
+, DF: {coord:	[-15.83, -47.86], count: 0}
+, ES: {coord:	[-19.19, -40.34], count: 0}
+, GO: {coord:	[-15.98, -49.86], count: 0}
+, MA: {coord: [-5.42, -45.44], count: 0}
+, MT: {coord:	[-12.64, -55.42], count: 0}
+, MS: {coord:	[-20.51, -54.54], count: 0}
+, MG: {coord:	[-18.10, -44.38], count: 0}
+, PA: {coord: [-3.79, -52.48], count: 0}
+, PB: {coord: [-7.28, -36.72], count: 0}
+, PR: {coord:	[-24.89, -51.55], count: 0}
+, PE: {coord: [-8.38, -37.86], count: 0}
+, PI: {coord: [-6.60, -42.28], count: 0}
+, RJ: {coord:	[-22.25, -42.66], count: 0}
+, RN: {coord: [-5.81, -36.59], count: 0}
+, RO: {coord:	[-10.83, -63.34], count: 0}
+, RS: {coord:	[-30.17, -53.50], count: 0}
+, RR: {coord: [1.99, -61.33], count: 0}
+, SC: {coord:	[-27.45, -50.95], count: 0}
+, SE: {coord:	[-10.57, -37.45], count: 0}
+, SP: {coord:	[-22.19, -48.79], count: 0}
+, TO: {coord: [-9.46, -48.26], count: 0}
 }
+
+var map = L.map('map').setView([-13.449201, -51.013679], 4.45);
+
+/*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);*/
+
+var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 18,
+	ext: 'png'
+}).addTo(map);
+
+L.tileLayer.wms("http://sistemas.gt4w.com.br/geoserver/processo_seletivo/wms", {
+  layers: 'processo_seletivo:ufs_brasil',
+  format: 'image/png',
+  transparent: true
+}).addTo(map);
+
+apiGet("patients").then(function(response){
+  response.forEach(function(p){
+    estadoscoordenadas[p.uf].count++
+  })
+  Object.keys(estadoscoordenadas).forEach(function(k){
+    var estado = estadoscoordenadas[k]
+    L.marker(estado.coord).addTo(map)
+      .bindPopup(`${estado.count} Paciente Cadastrados`);
+  })
+})
+

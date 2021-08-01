@@ -37,13 +37,22 @@ $("#cadastrar").click(function(){
         return false;
     } else { 
         apiPost("enfermeiro", data).then( function(response){
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Enfermeiro cadastrado com sucesso',
-              showConfirmButton: false,
-              timer: 1500
-            })
+            if(response.id){
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Enfermeiro cadastrado com sucesso',
+                  showConfirmButton: false,
+                  timer: 2000
+                }).then((result) => {window.location.href = window.location.href})
+                
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.status == 401 ? 'Não Autorizado' : "Falha ao cadastrar",
+                  })
+            }
           });
     }
   })
