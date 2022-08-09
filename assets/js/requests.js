@@ -48,7 +48,7 @@ function apiPost(endpoint, body){
 /*apiPost("patients",
     {
         "nome": "David",
-        "cpf": "068.627.655-82",
+        "cpf": "000.627.600-00",
         "data_nasc": "2021-01-01T03:00:00.000+00:00",
         "peso": 63.0,
         "altura": 1.86,
